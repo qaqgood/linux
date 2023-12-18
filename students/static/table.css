@@ -1,0 +1,47 @@
+/* 基本表格样式 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+/* 表头样式 */
+thead {
+  background-color: #f2f2f2;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd; /* 添加竖线分隔线 */
+}
+
+/* 隔行变色 */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* 鼠标悬停效果 */
+tbody tr:hover {
+  background-color: #e0e0e0;
+}
+
+/* 表尾样式 */
+tfoot {
+  font-weight: bold;
+}
+
+/* 移除最后一列的右边框，防止出现额外的竖线 */
+th:last-child, td:last-child {
+  border-right: none;
+}
+a {
+  text-decoration: none; /* 去除下划线 */
+  color: #000; /* 设置链接文本颜色 */
+  transition: color 0.3s; /* 添加颜色变化的过渡效果 */
+}
+
+a:hover {
+  color: #00f; /* 在悬停时改变链接文本颜色 */
+}

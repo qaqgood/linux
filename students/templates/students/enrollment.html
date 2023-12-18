@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生选课系统</title>
+</head>
+<body>
+    <h1>学生选课系统</h1>
+
+    <!-- 学生列表展示 -->
+
+    <h2>查询学生已选课程</h2>
+<form action="{% url 'query_student_courses' %}" method="post">
+    {% csrf_token %}
+    <label for="student_roll_number">输入学号：</label>
+    <input type="text" name="student_roll_number" id="student_roll_number" required>
+    <button type="submit">查询</button>
+</form>
+
+
+    <h2>学生选课</h2>
+    <form action="{% url 'choose_courses_view' %}" method="post">
+    {% csrf_token %}
+    <label for="student_roll_number">输入学号：</label>
+    <input type="text" name="student_roll_number" id="student_roll_number" required>
+    <button type="submit">确认</button>
+</form>
+    <!-- 其他内容 -->
+</body>
+</html>

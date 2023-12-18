@@ -1,0 +1,5 @@
+<form method="post" action="{% url 'create_course_type' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">创建新课程类型</button>
+</form>

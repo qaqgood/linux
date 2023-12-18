@@ -1,0 +1,12 @@
+
+{% block content %}
+  <h2>修改课程</h2>
+ <!-- 在 edit_course.html 中 -->
+<form method="post" action="{% url 'edit_course' course.course_no %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">保存修改</button>
+</form>
+
+
+{% endblock %}

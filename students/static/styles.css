@@ -1,0 +1,117 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+
+/* 在这里添加其他自定义样式 */
+/* 在 styles.css 中 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+
+/* 去掉链接的下划线 */
+a {
+    text-decoration: none;
+}
+
+/* 添加基本样式 */
+a {
+    color: #333; /* 设置链接颜色 */
+    transition: color 0.3s; /* 添加颜色变化的过渡效果 */
+}
+
+/* 鼠标悬停时改变颜色 */
+a:hover {
+    color: #007bff; /* 设置悬停时的颜色 */
+}
+
+
+/* 设置左侧导航样式 */
+aside {
+    float: left;
+    width: 200px; /* 调整导航宽度 */
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center; /* 将导航文字居中对齐 */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    margin-bottom: 5px; /* 设置列表项之间的间距 */
+}
+h2 {
+    color: #333;
+}
+
+/* 设置右侧内容样式 */
+
+#content-container {
+    margin-left: 220px; /* 留出左侧导航的宽度，避免重叠 */
+    padding: 10px;
+    position: relative;
+    min-height: 400px; /* 适当调整容器高度 */
+}
+
+.table-container {
+    margin-bottom: 20px; /* 为表格添加底部边距，使其与分页保持一定间距 */
+}
+
+.pagination {
+    position: absolute;
+    bottom: -30px; /* 距离表格底部的距离，可以根据需要调整 */
+    right: 0;
+}
+
+/*#content-container {*/
+/*    margin-left: 220px; !* 留出左侧导航的宽度，避免重叠 *!*/
+/*    padding: 10px;*/
+/*    position: relative;*/
+/*    min-height: 400px; !* 适当调整容器高度 *!*/
+/*}*/
+
+
+/*.pagination {*/
+/*    position: absolute;*/
+/*    bottom: -30px; !* 距离表格底部的距离，可以根据需要调整 *!*/
+/*    right: 0;*/
+/*}*/

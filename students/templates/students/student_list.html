@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/table.css' %}">
+</head>
+<body>
+<h2>学生数据</h2>
+<button type="button" onclick="openAddStudentModal()">添加学生</button>
+
+<script>
+  function openAddStudentModal() {
+    window.location.href = "{% url 'add_student' %}";
+  }
+</script>
+
+<form method="get" action="{% url 'student_list' %}">
+    <input type="text" name="query" value="{{ query }}">
+    <button type="submit">搜索</button>
+</form>
+
+<table >
+    <thead>
+        <tr>
+            <th>姓名</th>
+            <th>学号</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>班级</th>
+            <th>功能</th>
+            <th>功能</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.roll_number }}</td>
+                <td>{{ student.age }}</td>
+                <td>{{ student.get_sex_display }}</td>
+                <td>{{ student.class_name }}</td>
+            <td><a>删除</a></td>
+                <td><a>修改</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if students.has_previous %}
+            <a href="{% url 'student_list' %}?page=1">&laquo; 首页</a>
+            <a href="{% url 'student_list' %}?page={{ students.previous_page_number }}">上一页</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ students.number }} of {{ students.paginator.num_pages }}.
+        </span>
+
+        {% if students.has_next %}
+            <a href="{% url 'student_list' %}?page={{ students.next_page_number }}">下一页</a>
+            <a href="{% url 'student_list' %}?page={{ students.paginator.num_pages }}">最后一页 &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+</body>
+</html>

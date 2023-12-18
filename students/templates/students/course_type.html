@@ -1,0 +1,88 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/table.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+   <script src="{% static 'csrftoken.js' %}"></script>
+</head>
+<body>
+<h2>课程类型</h2>
+<td><a href="{% url 'create_course_type'  %}">新增</a></td>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>类型</th>
+            <th>操作</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course_type in courses %}
+            <tr>
+                <td>{{ course_type.id }}</td>
+                <td>{{ course_type.type_name }}</td>
+                <td><a href="/edit_course_type/{{ course_type.id }}/">编辑</a></td>
+                 <td><a href="#" onclick="deleteCourseType({{ course_type.id }}); return false;">删除</a></td>
+            </tr>
+
+        {% endfor %}
+
+    </tbody>
+</table>
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if courses.has_previous %}
+            <a href="{% url 'course_type' %}?page=1">&laquo; 首页</a>
+            <a href="{% url 'course_type' %}?page={{ courses.previous_page_number }}">上一页</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ courses.number }} of {{ courses.paginator.num_pages }}.
+        </span>
+
+        {% if courses.has_next %}
+            <a href="{% url 'course_type' %}?page={{ courses.next_page_number }}">下一页</a>
+            <a href="{% url 'course_type' %}?page={{ courses.paginator.num_pages }}">最后一页 &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+<script>
+    function deleteCourseType(courseTypeId) {
+    if (confirm('确认删除？')) {
+        // 获取 CSRF 令牌的值
+        const csrftoken = getCookie('csrftoken');
+
+        // 使用 AJAX 请求删除记录
+        $.ajax({
+            url: '{% url "delete_course_type" %}',
+            method: 'POST',
+            data: { 'course_type_id': courseTypeId },
+            headers: {
+                'X-CSRFToken': csrftoken
+            },
+            success: function () {
+                 alert("删除成功！")
+                 location.reload();
+            },
+            error: function () {
+                alert('删除失败！');
+            }
+        });
+    }
+}
+
+
+
+</script>
+</body>
+</html>
